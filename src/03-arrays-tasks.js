@@ -310,7 +310,7 @@ function get3TopItems(arr) {
  * Returns the number of positive numbers from specified array
  *
  * @param {array} arr
- * @return {number}
+ * @return {number}getPositivesCount
  *
  * @example
  *   [ ]          => 0
@@ -319,10 +319,10 @@ function get3TopItems(arr) {
  *   [ null, 1, 'elephant' ] => 1
  *   [ 1, '2' ] => 1
  */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  const newArray = arr.filter((el) => (el > 0 && typeof el === 'number'));
+  return newArray.length;
 }
-
 /**
  * Sorts digit names
  *
