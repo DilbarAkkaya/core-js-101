@@ -7,7 +7,8 @@
 
 
 /**
- * Return Promise object that is resolved with string value === 'Hooray!!! She said "Yes"!',
+ * Return Promise object that is resolved with string value === 'Hooray!!! She said "Yes"!'
+ * ,
  * if boolean value === true is passed, resolved with string value === 'Oh no, she said "No".',
  * if boolean value === false is passed, and rejected
  * with error message === 'Wrong parameter is passed! Ask her again.',
@@ -28,8 +29,18 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+function willYouMarryMe(isPositiveAnswer) {
+  const firstValue = 'Hooray!!! She said "Yes"!';
+  const secondValue = 'Oh no, she said "No".';
+  const thirdValue = 'Wrong parameter is passed! Ask her again.';
+  if (isPositiveAnswer === true) return Promise.resolve(firstValue).then((result) => result);
+  if (isPositiveAnswer === false) return Promise.resolve(secondValue).then((result) => result);
+  if (typeof isPositiveAnswer !== 'boolean') {
+    return Promise.reject(new Error(thirdValue)).then(() => {}, () => {
+      throw new Error(thirdValue);
+    });
+  }
+  return Promise.reject(new Error(thirdValue)).then(() => {}, () => new Error(thirdValue));
 }
 
 
