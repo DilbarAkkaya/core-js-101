@@ -82,8 +82,9 @@ function processAllPromises(array) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
+async function getFastestPromise(array) {
+  const res = await Promise.race((array)).then((el) => el);
+  return res;
 }
 
 /**
