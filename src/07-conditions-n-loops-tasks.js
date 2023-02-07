@@ -177,10 +177,16 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  let char;
+  for (let i = 0; i < str.length; i += 1) {
+    if (str.indexOf(str.charAt(i)) === str.lastIndexOf(str.charAt(i))) {
+      char = str.charAt(i);
+      break;
+    }
+  }
+  return char;
 }
-
 
 /**
  * Returns the string representation of math interval,
